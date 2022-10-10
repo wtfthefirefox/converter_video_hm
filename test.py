@@ -13,7 +13,12 @@ arr_of_files = [f for f in listdir("./samples") if (isfile(join("./samples", f))
 arr_of_files = map(lambda f: './samples/' + f, arr_of_files);
 
 for file in arr_of_files:
-  (ffmpeg
+    try:
+        (ffmpeg
         .input(file)
+        .filter('setdar', '16/9') # add black line
         .output('./result/' + file[find_nth(file, '/', 2) + 1:file.rfind('.')] + '.mp4')
         .run())
+    except Exception as e:
+        print(f"Error at {file}")
+        print(e)
