@@ -1,8 +1,7 @@
 from os import listdir
 from os.path import isfile, join
-import ffmpeg
-
 import subprocess
+import ffmpeg
 import shlex
 import json
 
